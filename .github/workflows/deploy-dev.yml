@@ -2,15 +2,31 @@ name: Deploy to Salesforce Dev Org
 
 on:
   push:
-    branches: [Master]
+    branches:
+      - master
+    paths:
+      - 'force-app/**'
+      - 'manifest/**'
+      - 'sfdx-project.json'
+      - '.github/workflows/deploy-dev.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: salesforce-dev-org-deployment
+  cancel-in-progress: false
 
 jobs:
   deploy:
+    name: Deploy to Dev Org
     runs-on: ubuntu-latest
     environment: dev
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Check out source
+        uses: actions/checkout@v4
 
       - name: Install Salesforce CLI
         run: npm install --global @salesforce/cli
@@ -18,12 +34,16 @@ jobs:
       - name: Authenticate to Dev Org
         env:
           SFDX_AUTH_URL: ${{ secrets.SF_DEV_ORG_SFDX_AUTH_URL }}
+          SF_DISABLE_TELEMETRY: true
         run: |
           printf '%s' "$SFDX_AUTH_URL" > auth-url.txt
-          sf org login sfdx-url --sfdx-url-file auth-url.txt --alias dev-org --set-default
+          sf org login sfdx-url \
+            --sfdx-url-file auth-url.txt \
+            --alias dev-org \
+            --set-default
           rm auth-url.txt
 
-      - name: Deploy Salesforce source
+      - name: Deploy Salesforce source to Dev Org
         run: |
           sf project deploy start \
             --source-dir force-app \
