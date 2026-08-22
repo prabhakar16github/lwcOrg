@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+    <labels>
+        <fullName>AccountId_for_doc_upload</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AccountId for doc upload</shortDescription>
+        <value>0062x00000CMA9vAAH</value>
+    </labels>
+    <labels>
+        <fullName>My_Email_Ids</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>My Email Ids</shortDescription>
+        <value>prabhakar.dev1993@gmail.com</value>
+    </labels>
+    <labels>
+        <fullName>tfl_Ramp_cloudName</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>tfl_Ramp_cloudName</shortDescription>
+        <value>hizu4jrw7</value>
+    </labels>
+    <labels>
+        <fullName>tfl_Ramp_uploadPreset</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>tfl_Ramp_uploadPreset</shortDescription>
+        <value>Application_Images</value>
+    </labels>
+</CustomLabels>
