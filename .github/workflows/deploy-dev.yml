@@ -36,7 +36,7 @@ jobs:
           SFDX_AUTH_URL: ${{ secrets.SF_DEV_ORG_SFDX_AUTH_URL }}
           SF_DISABLE_TELEMETRY: true
         run: |
-          printf '%s' "$SFDX_AUTH_URL" > auth-url.txt
+          
           sf org login sfdx-url \
             --sfdx-url-file auth-url.txt \
             --alias dev-org \
